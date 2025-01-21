@@ -63,13 +63,13 @@ public class Main {
         queue.enqueue("Катя");
         queue.enqueue("Петя");
 
-        int count = queue.count(Main::check);
+        int n = queue.count(Main::check);
 
-        assertEquals(2, count, "testCount");
+        assertEquals(2, n, "testCount");
     }
 
-    private static boolean check(String s) {
-        return s.charAt(0) == 'К';
+    private static boolean check(String value) {
+        return value.charAt(0) == 'К';
     }
 
     private static void assertEquals(Object expected, Object actual, String message) {

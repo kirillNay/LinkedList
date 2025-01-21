@@ -2,42 +2,43 @@ package nay.kirill.generics.linkedList;
 
 public class Queue<T> {
 
-    private Node front = null;
+    Node back;
 
-    private Node back = null;
+    Node head;
 
-    private int size = 0;
+    int size;
 
-    void enqueue(T value) {
-        Node node = new Node(value);
+    void enqueue(T data) {
+        Node node = new Node(data);
 
         if (back == null) {
-            front = node;
+            head = node;
         } else {
             back.next = node;
         }
 
-        back = node;
         size++;
+        back = node;
     }
 
     T dequeue() {
-        if (front == null) {
+        if (head == null) {
             return null;
         }
 
-        T value = front.value;
-        front = front.next;
+        T value = head.value;
+
         size--;
+        head = head.next;
         return value;
     }
 
     T peek() {
-        if (front == null) {
+        if (head == null) {
             return null;
         }
 
-        return front.value;
+        return head.value;
     }
 
     int size() {
@@ -45,12 +46,12 @@ public class Queue<T> {
     }
 
     boolean isEmpty() {
-        return front == null;
+        return head == null;
     }
 
     int count(Predicate<T> predicate) {
         int counter = 0;
-        for(Queue<T>.Node node = front; node != null; node = node.next) {
+        for (Node node = head; node != null; node = node.next) {
             T value = node.value;
             if (predicate.check(value)) {
                 counter++;
@@ -71,4 +72,5 @@ public class Queue<T> {
         }
 
     }
+
 }

@@ -1,7 +1,7 @@
 package nay.kirill.generics.linkedList;
 
-public interface Predicate<TValue> {
+public interface Predicate<T> {
 
-    boolean check(TValue value);
+    boolean check(T value);
 
 }
